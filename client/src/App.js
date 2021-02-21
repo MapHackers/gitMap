@@ -13,6 +13,7 @@ import Footer from './components/views/Footer/Footer'
 import MapInfo from './components/views/MapInfoPage/MapInfo'
 import CategoryPage from './components/views/CategoryPage/CategoryPage'
 import RepositoryPage from './components/views/RepositoryPage/RepositoryPage'
+import MyPage from './components/views/MyPage/MyPage'
 import Auth from './hoc/auth'
 import { Suspense } from 'react';
 
@@ -34,12 +35,13 @@ export class App extends Component {
           <NavBar />
           <div style={{ paddingTop: '69px', minHeight: 'clac(100vh - 80px)' }}>
             <Switch>
-              <Route exact path="/" component={Auth(LandingPage, null)} />
-              <Route exact path="/login" component={Auth(LoginPage, false)} />
+              <Route exact path="/" component={Auth(LoginPage, null)} />
+              <Route exact path="/main" component={Auth(LandingPage, null)} />
               <Route exact path="/register" component={Auth(RegisterPage, false)} />
               <Route exact path="/mapinfo/:mapId" component={Auth(MapInfo, null)} />
               <Route exact path="/category/:categoryId" component={Auth(CategoryPage, null)} />
-              <Route exact path="/repository/:userId" component={Auth(RepositoryPage, null)} />
+              <Route exact path="/:userId/repository/:repositoryId" component={Auth(RepositoryPage, null)} />
+              <Route exact path="/:userId" component={Auth(MyPage, null)} />
             </Switch>
           </div>
           <Footer />
