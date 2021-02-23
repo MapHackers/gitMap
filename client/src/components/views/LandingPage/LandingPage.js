@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Slider from './NetflixSlider'
+import MainContent from './Sections/MainContent'
 import './LandingPage.scss'
 
 const cards = [
@@ -100,6 +101,7 @@ export class LandingPage extends Component {
     render() {
         return (
             <div className="LandingPage">
+                <MainContent />
                 <Slider title="Stared">
                     {cards.map(card => (
                         <Slider.Item card={card} key={card.id}>item</Slider.Item>
