@@ -39,7 +39,7 @@ function LoginSection(props) {
     };
 
     return (
-        <div style={{ backgroundColor: 'rgba(0,0,0,0.1)', width: '500px', height: '300px', display: 'table', margin: 'auto', marginTop: '100px' }}>
+        <div style={{ backgroundColor: 'rgba(0,0,0,0.1)', width: '500px', height: '300px', display: 'table', margin: 'auto', marginTop: '170px' }}>
             <Formik
                 initialValues={{
                     email: initialEmail,
