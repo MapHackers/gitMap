@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import Slider from './NetflixSlider'
 import MainContent from './Sections/MainContent'
 import './LandingPage.scss'
+import ItemAtom from './NetflixSlider/ItemAtom';
 
 const cards = [
     {
@@ -45,76 +46,95 @@ const cards = [
         title: 'Black mirror'
     },
     {
-        id: 4,
+        id: 9,
         image: '/images/img4.jpg',
         title: 'Sex education'
     },
     {
-        id: 5,
+        id: 10,
         image: '/images/img.jpg',
         title: 'Elite'
     },
     {
-        id: 6,
+        id: 11,
         image: '/images/img2.jpg',
         title: 'Black mirror'
     },
     {
-        id: 7,
+        id: 12,
         image: '/images/img3.jpeg',
         title: 'Black mirror'
     },
     {
-        id: 8,
+        id: 13,
         image: '/images/img4.jpg',
         title: 'Black mirror'
     },
     {
-        id: 4,
+        id: 14,
         image: '/images/img4.jpg',
         title: 'Sex education'
     },
     {
-        id: 5,
+        id: 15,
         image: '/images/img.jpg',
         title: 'Elite'
     },
     {
-        id: 6,
+        id: 16,
         image: '/images/img2.jpg',
         title: 'Black mirror'
     },
     {
-        id: 7,
+        id: 17,
         image: '/images/img3.jpeg',
         title: 'Black mirror'
     },
     {
-        id: 8,
+        id: 18,
         image: '/images/img4.jpg',
         title: 'Black mirror'
     }
 ];
 
+function LandingPage() {
 
-export class LandingPage extends Component {
-    render() {
-        return (
-            <div className="LandingPage">
-                <MainContent />
-                <Slider title="Stared">
-                    {cards.map(card => (
-                        <Slider.Item card={card} key={card.id}>item</Slider.Item>
-                    ))}
-                </Slider>
-                <Slider title="Category">
-                    {cards.map(card => (
-                        <Slider.Item card={card} key={card.id}>item</Slider.Item>
-                    ))}
-                </Slider>
-            </div>
-        )
+    const [popupData, setpopupData] = useState([
+        {
+            X: '',
+            Y: '',
+            src: ''
+
+        }
+    ])
+
+    const onItemHover = (data) => {
+        console.log(data)
+        setpopupData({
+            X: data.sliderOffsetX,
+            Y: data.sliderOffsetY,
+            src: '',
+        })
     }
+
+    return (
+        <div className="LandingPage">
+            <MainContent />
+            <Slider title="Stared">
+                {cards.map(card => (
+                    <Slider.Item card={card} key={card.id} onItemHover={onItemHover}>item</Slider.Item>
+                ))}
+            </Slider>
+            <Slider title="Category">
+                {cards.map(card => (
+                    <Slider.Item card={card} key={card.id} onItemHover={onItemHover}>item</Slider.Item>
+                ))}
+            </Slider>
+            <div className="test" style={{ top: `${popupData.Y}`}}>
+                box
+            </div>
+        </div>
+    )
 }
 
 export default LandingPage

@@ -5,10 +5,11 @@ import AwesomeSliderStyles from 'react-awesome-slider/src/styled/scale-out-anima
 
 function MainContent() {
     return (
-        <div style={{height: '100%', width: '100%', maxWidth: '1000px', display:'block', position:'relative', marginLeft: 'auto', marginRight: 'auto'}}>
+        <div style={{width: '80vmin', height: '80vmin' ,display:'block', position:'relative', marginLeft: 'auto', marginRight: 'auto'}}>
             <AwesomeSlider 
             cssModule={[AwesomeSliderStyles, CoreStyles]}
             animation="scaleOutAnimation"
+            fillParent={true}
             >
                 <div data-src='/images/mainContent1.png' />
                 <div data-src='/images/mainContent2.jpeg' />
