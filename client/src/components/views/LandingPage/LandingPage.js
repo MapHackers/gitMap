@@ -3,6 +3,7 @@ import Slider from './NetflixSlider'
 import MainContent from './Sections/MainContent'
 import './LandingPage.scss'
 import ItemAtom from './NetflixSlider/ItemAtom';
+import styled from 'styled-components'
 
 const cards = [
     {
@@ -102,7 +103,7 @@ function LandingPage() {
     const [popupData, setpopupData] = useState([
         {
             X: '',
-            Y: '',
+            Y: '100',
             src: ''
 
         }
@@ -111,8 +112,9 @@ function LandingPage() {
     const onItemHover = (data) => {
         console.log(data)
         setpopupData({
-            X: data.sliderOffsetX,
-            Y: data.sliderOffsetY,
+            X: data.rect.left,
+            Y: data.rect.top + data.scrollY,
+            scrollY: data.scrollY,
             src: '',
         })
     }
@@ -130,11 +132,13 @@ function LandingPage() {
                     <Slider.Item card={card} key={card.id} onItemHover={onItemHover}>item</Slider.Item>
                 ))}
             </Slider>
-            <div className="test" style={{ top: `${popupData.Y}`}}>
-                box
+            <div className="test" style={{ top: `${popupData.Y}px`, left: `${popupData.X}px`}}>
+                box {popupData.Y} {popupData.X}
             </div>
         </div>
     )
 }
+
+
 
 export default LandingPage

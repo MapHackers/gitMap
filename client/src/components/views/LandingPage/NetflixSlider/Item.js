@@ -13,6 +13,7 @@ function Item({ card, onItemHover }) {
             // sliderOffsetX : e.currentTarget.parentElement.parentElement.parentElement.offsetLeft,
             // sliderOffsetY : e.currentTarget.parentElement.parentElement.parentElement.offsetTop,
             rect: e.currentTarget.parentElement.children[card.id-1].getBoundingClientRect(),
+            scrollY: window.scrollY
         }
         onItemHover(data)
     }

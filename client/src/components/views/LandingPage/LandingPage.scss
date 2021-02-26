@@ -1,2 +1,15 @@
 .LandingPage {
+    .test {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        top: 1100px;
+        left: 50px;
+        z-index: 10;
+    }
+
+    .slider-wrapper .slider .item:hover + .test{
+        opacity: 1;
+    }
 }
